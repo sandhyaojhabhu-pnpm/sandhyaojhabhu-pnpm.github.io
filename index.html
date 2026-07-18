@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sandhya Kumari Ojha — Senior Angular Developer</title>
+<meta name="description" content="Sandhya Kumari Ojha — Senior Angular Developer. Angular, Node.js, Docker. Building fast, scalable web experiences.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0e12; --bg2:#0e141b; --card:#121a22; --card2:#16202b;
+    --emerald:#10b981; --emerald2:#34d399; --emerald-dim:#0f766e;
+    --text:#e7eef2; --muted:#93a4b3; --line:rgba(255,255,255,.08);
+    --glow:rgba(16,185,129,.35);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+    background:var(--bg); color:var(--text); line-height:1.6; overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.brand,.role-tag,.orbit-badge{font-family:"Space Grotesk","Inter",sans-serif}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+  section{padding:90px 0;position:relative}
+  .eyebrow{color:var(--emerald2);font-size:13px;letter-spacing:3px;text-transform:uppercase;font-weight:600;margin-bottom:10px;display:inline-block}
+  h2.title{font-size:clamp(26px,4vw,40px);font-weight:700;letter-spacing:-.5px;margin-bottom:8px}
+  .lead{color:var(--muted);max-width:640px;font-size:15.5px}
+  .accent{color:var(--emerald2)}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;transition:.35s;padding:18px 0}
+  nav.scrolled{background:rgba(10,14,18,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:12px 0}
+  .nav-in{display:flex;align-items:center;justify-content:space-between}
+  .brand{font-weight:700;font-size:19px;letter-spacing:.5px}
+  .brand b{color:var(--emerald2)}
+  .nav-links{display:flex;gap:26px;align-items:center}
+  .nav-links a{color:var(--muted);font-size:14px;font-weight:500;transition:.2s;position:relative}
+  .nav-links a:hover{color:var(--text)}
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--emerald);transition:.25s;border-radius:2px}
+  .nav-links a:hover::after{width:100%}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:999px;font-weight:600;font-size:14px;transition:.25s;cursor:pointer;border:1px solid transparent}
+  .btn-primary{background:linear-gradient(135deg,var(--emerald),var(--emerald-dim));color:#04120d;box-shadow:0 8px 24px var(--glow)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 30px var(--glow)}
+  .btn-ghost{border-color:var(--line);color:var(--text);background:rgba(255,255,255,.02)}
+  .btn-ghost:hover{border-color:var(--emerald);color:var(--emerald2)}
+  .menu-btn{display:none;background:none;border:none;color:var(--text);font-size:26px;cursor:pointer}
+
+  /* HERO */
+  .hero{min-height:100vh;display:flex;align-items:center;padding-top:90px;position:relative;overflow:hidden}
+  #stars{position:absolute;inset:0;z-index:0}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;position:relative;z-index:2}
+  .hero-left .role-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.28);color:var(--emerald2);padding:6px 14px;border-radius:999px;font-size:13px;font-weight:600;letter-spacing:1px}
+  .hero-left h1{font-size:clamp(34px,6vw,58px);line-height:1.05;font-weight:700;letter-spacing:-1px;margin:18px 0 6px}
+  .hero-left h1 .grad{background:linear-gradient(120deg,var(--emerald2),#7ff0c9);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .type-line{font-size:clamp(16px,2.4vw,22px);color:var(--muted);font-weight:500;min-height:1.4em;margin-bottom:18px}
+  .type-line .cursor{color:var(--emerald2);animation:blink 1s steps(1) infinite}
+  @keyframes blink{50%{opacity:0}}
+  .hero-desc{color:var(--muted);max-width:480px;margin-bottom:26px;font-size:15.5px}
+  .hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:26px}
+  .socials{display:flex;gap:14px}
+  .socials a{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:var(--card);border:1px solid var(--line);color:var(--muted);transition:.25s}
+  .socials a:hover{color:var(--emerald2);border-color:var(--emerald);transform:translateY(-3px)}
+  .socials svg{width:19px;height:19px;fill:currentColor}
+
+  /* ORBIT */
+  .orbit-wrap{position:relative;display:grid;place-items:center;height:440px}
+  .orbit-ring{position:absolute;border:1px solid rgba(255,255,255,.06);border-radius:50%}
+  .r1{width:300px;height:300px} .r2{width:410px;height:410px}
+  .spin{position:absolute;width:410px;height:410px;animation:spin 26s linear infinite}
+  .spin.rev{width:300px;height:300px;animation:spin 20s linear infinite reverse}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .orbit-badge{position:absolute;top:-19px;left:50%;transform:translateX(-50%);background:var(--card2);border:1px solid var(--line);color:var(--text);font-size:12.5px;font-weight:600;padding:7px 13px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.4);white-space:nowrap}
+  .orbit-badge.em{color:var(--emerald2);border-color:rgba(16,185,129,.4)}
+  .avatar{position:relative;z-index:3;width:200px;height:200px;border-radius:36px;padding:5px;background:linear-gradient(135deg,var(--emerald2),var(--emerald-dim));box-shadow:0 0 60px var(--glow)}
+  .emblem{width:100%;height:100%;border-radius:32px;background:linear-gradient(160deg,#0f1e1a,#0a1512);display:grid;place-items:center;text-align:center}
+  .emblem .mono{font-family:"Space Grotesk";font-size:60px;font-weight:700;line-height:1;background:linear-gradient(120deg,var(--emerald2),#7ff0c9);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .emblem .code{font-family:"Space Grotesk";font-size:15px;color:var(--emerald2);margin-top:8px;letter-spacing:1px;opacity:.8}
+  .emblem .tag{font-size:10.5px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-top:4px}
+  .pulse{position:absolute;width:200px;height:200px;border-radius:36px;border:1px solid rgba(16,185,129,.4);animation:pulse 3s ease-out infinite}
+  @keyframes pulse{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.7);opacity:0}}
+
+  /* SECTION CARDS */
+  .grid{display:grid;gap:22px}
+  .about-grid{grid-template-columns:1.4fr 1fr;gap:40px;align-items:start}
+  .stat-box{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;text-align:center}
+  .stat-box .num{font-size:30px;font-weight:700;color:var(--emerald2);font-family:"Space Grotesk"}
+  .stat-box .lab{color:var(--muted);font-size:13px;margin-top:2px}
+  .stats{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .about-text p{color:var(--muted);margin-bottom:14px;font-size:15.5px}
+  .about-text b{color:var(--text)}
+
+  /* SKILLS */
+  .skill-cards{grid-template-columns:repeat(2,1fr)}
+  .skill-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;transition:.3s}
+  .skill-card:hover{border-color:rgba(16,185,129,.4);transform:translateY(-4px);box-shadow:0 14px 34px rgba(0,0,0,.35)}
+  .skill-card h3{font-size:15px;color:var(--emerald2);margin-bottom:12px;letter-spacing:.5px;display:flex;align-items:center;gap:9px}
+  .skill-card h3 .dot{width:8px;height:8px;border-radius:50%;background:var(--emerald)}
+  .chips{display:flex;flex-wrap:wrap;gap:7px}
+  .chip{background:var(--card2);border:1px solid var(--line);color:#c7d3dd;font-size:12px;padding:5px 11px;border-radius:8px;transition:.2s}
+  .skill-card:hover .chip{border-color:rgba(16,185,129,.2)}
+
+  /* PROJECTS */
+  .proj-grid{grid-template-columns:repeat(2,1fr)}
+  .proj{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;transition:.3s;position:relative;overflow:hidden}
+  .proj::before{content:"";position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--emerald),transparent);opacity:0;transition:.3s}
+  .proj:hover{transform:translateY(-6px);border-color:rgba(16,185,129,.35);box-shadow:0 20px 44px rgba(0,0,0,.4)}
+  .proj:hover::before{opacity:1}
+  .proj .top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:6px}
+  .proj h3{font-size:18px;font-weight:600}
+  .proj .live{font-size:11px;font-weight:700;color:#04120d;background:var(--emerald2);padding:3px 10px;border-radius:999px;white-space:nowrap}
+  .proj .sub{color:var(--muted);font-size:13px;font-style:italic;margin-bottom:12px}
+  .proj ul{list-style:none;margin-bottom:14px}
+  .proj li{color:#c7d3dd;font-size:13.5px;padding-left:18px;position:relative;margin:5px 0}
+  .proj li::before{content:"▹";position:absolute;left:0;color:var(--emerald2)}
+  .proj .stack{display:flex;flex-wrap:wrap;gap:6px}
+  .proj .stack span{font-size:11px;color:var(--muted);background:var(--card2);padding:3px 9px;border-radius:6px}
+  .proj .links{margin-top:14px;display:flex;gap:14px}
+  .proj .links a{color:var(--emerald2);font-size:13px;font-weight:600;display:inline-flex;align-items:center;gap:5px}
+  .proj .links a:hover{text-decoration:underline}
+
+  .earlier{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 24px;margin-top:22px}
+  .earlier h3{font-size:14px;color:var(--emerald2);margin-bottom:10px;letter-spacing:.5px}
+  .earlier li{color:#c7d3dd;font-size:13.5px;margin:6px 0;list-style:none;padding-left:16px;position:relative}
+  .earlier li::before{content:"›";position:absolute;left:0;color:var(--emerald2);font-weight:700}
+  .earlier b{color:var(--text)}
+
+  /* EXPERIENCE */
+  .exp{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px;border-left:3px solid var(--emerald)}
+  .exp .head{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;align-items:baseline;margin-bottom:12px}
+  .exp .r{font-size:18px;font-weight:600}
+  .exp .c{color:var(--muted);font-size:14px}
+  .exp .d{color:var(--emerald2);font-size:13px;font-weight:600;background:rgba(16,185,129,.1);padding:4px 12px;border-radius:999px}
+  .exp ul{list-style:none}
+  .exp li{color:#c7d3dd;font-size:14px;padding-left:18px;position:relative;margin:7px 0}
+  .exp li::before{content:"▹";position:absolute;left:0;color:var(--emerald2)}
+
+  /* CONTACT */
+  .contact{text-align:center}
+  .contact .big{font-size:clamp(28px,5vw,46px);font-weight:700;letter-spacing:-.5px;margin:12px 0 14px}
+  .contact .big .grad{background:linear-gradient(120deg,var(--emerald2),#7ff0c9);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .contact p{color:var(--muted);max-width:520px;margin:0 auto 26px}
+  .contact-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+  footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:var(--muted);font-size:13px}
+  footer b{color:var(--emerald2)}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(28px);transition:.7s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(max-width:880px){
+    .nav-links{position:fixed;top:0;right:-100%;height:100vh;width:74%;max-width:320px;background:var(--bg2);flex-direction:column;justify-content:center;gap:30px;transition:.35s;border-left:1px solid var(--line)}
+    .nav-links.open{right:0}
+    .menu-btn{display:block;z-index:110}
+    .hero-grid{grid-template-columns:1fr;text-align:center}
+    .hero-left .role-tag{margin:0 auto}
+    .hero-cta,.socials{justify-content:center}
+    .hero-desc{margin-left:auto;margin-right:auto}
+    .orbit-wrap{order:-1;height:380px;transform:scale(.85)}
+    .about-grid{grid-template-columns:1fr}
+    .skill-cards,.proj-grid{grid-template-columns:1fr}
+  }
+  @media(prefers-reduced-motion:reduce){.spin,.spin.rev,.pulse{animation:none}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="wrap nav-in">
+    <div class="brand">Sandhya<b>.</b></div>
+    <div class="nav-links" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+      <a href="sandhya-cv.pdf" class="btn btn-primary" target="_blank" rel="noopener">Resume</a>
+    </div>
+    <button class="menu-btn" id="menuBtn">&#9776;</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="home">
+  <canvas id="stars"></canvas>
+  <div class="wrap hero-grid">
+    <div class="hero-left">
+      <span class="role-tag">&#9679; Senior Angular Developer</span>
+      <h1>Hi, I'm <span class="grad">Sandhya</span><br>Kumari Ojha</h1>
+      <div class="type-line"><span id="typed"></span><span class="cursor">|</span></div>
+      <p class="hero-desc">I build fast, scalable and user-friendly web experiences with <b style="color:#cfe">Angular, Node.js &amp; Docker</b> — currently owning the complete frontend of <b style="color:#cfe">EkoStay</b>, a live vacation-rental platform.</p>
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary">View My Work &#8594;</a>
+        <a href="sandhya-cv.pdf" class="btn btn-ghost" target="_blank" rel="noopener">&#8681; View Resume</a>
+      </div>
+      <div class="socials">
+        <a href="https://linkedin.com/in/sandhya-ojha-63a72154" target="_blank" title="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.4 8.65 21 11 21 14.1V21h-4v-6.1c0-1.45-.03-3.3-2-3.3s-2.3 1.57-2.3 3.2V21H9z"/></svg></a>
+        <a href="mailto:sandhya.ojha7@gmail.com" title="Email"><svg viewBox="0 0 24 24"><path d="M2 4h20v16H2zm10 7L3.5 6h17z"/></svg></a>
+        <a href="https://ekostay.com" target="_blank" title="Live Work"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm6.9 6h-2.5a15.6 15.6 0 00-1.3-3.4A8 8 0 0118.9 8zM12 4c.8 1 1.4 2.4 1.8 4h-3.6C10.6 6.4 11.2 5 12 4zM4.3 14a7.8 7.8 0 010-4h2.9a17 17 0 000 4zm.8 2h2.5c.3 1.2.8 2.4 1.3 3.4A8 8 0 015.1 16zm2.5-8H5.1a8 8 0 013.8-3.4C8.4 5.6 7.9 6.8 7.6 8zM12 20c-.8-1-1.4-2.4-1.8-4h3.6c-.4 1.6-1 3-1.8 4zm2.2-6H9.8a15 15 0 010-4h4.4a15 15 0 010 4zm.6 5.4c.5-1 1-2.2 1.3-3.4h2.5a8 8 0 01-3.8 3.4zM16.8 14a17 17 0 000-4h2.9a7.8 7.8 0 010 4z"/></svg></a>
+      </div>
+    </div>
+    <div class="orbit-wrap">
+      <div class="orbit-ring r1"></div>
+      <div class="orbit-ring r2"></div>
+      <div class="pulse"></div>
+      <div class="spin">
+        <div class="orbit-badge em" style="transform:translateX(-50%)">Angular</div>
+        <div class="orbit-badge" style="top:auto;bottom:-19px">Docker</div>
+        <div class="orbit-badge em" style="top:50%;bottom:auto;left:-16px;transform:translateY(-50%)">AWS</div>
+      </div>
+      <div class="spin rev">
+        <div class="orbit-badge em">TypeScript</div>
+        <div class="orbit-badge" style="top:auto;bottom:-19px">Node.js</div>
+        <div class="orbit-badge em" style="top:50%;bottom:auto;left:auto;right:-16px;transform:translateY(-50%)">Claude AI</div>
+      </div>
+      <div class="avatar">
+        <div class="emblem">
+          <div class="mono">SO</div>
+          <div class="code">&lt;/&gt;</div>
+          <div class="tag">Angular Dev</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap reveal">
+    <span class="eyebrow">About Me</span>
+    <h2 class="title">Turning ideas into <span class="accent">scalable products</span></h2>
+    <div class="about-grid" style="margin-top:28px">
+      <div class="about-text">
+        <p>I'm a <b>Senior Angular Developer with 4+ years of experience</b> at ResilienceSoft, where I've delivered <b>5+ enterprise single-page applications</b> across vacation-rental, logistics, ticketing and data-management domains.</p>
+        <p>I currently <b>own the complete Angular frontend, payment integration and Docker deployments</b> for EkoStay — a live luxury vacation-rental platform — from architecture and reusable component libraries to performance optimization and production releases.</p>
+        <p>I care about clean architecture, reusable components, and <b>measurable results</b> — faster load times, smoother journeys and maintainable code.</p>
+      </div>
+      <div class="stats">
+        <div class="stat-box"><div class="num">4+</div><div class="lab">Years Experience</div></div>
+        <div class="stat-box"><div class="num">5+</div><div class="lab">Enterprise Apps</div></div>
+        <div class="stat-box"><div class="num">v12–20</div><div class="lab">Angular Migrations</div></div>
+        <div class="stat-box"><div class="num">AWS</div><div class="lab">Cloud Certified</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" style="background:var(--bg2)">
+  <div class="wrap reveal">
+    <span class="eyebrow">What I Work With</span>
+    <h2 class="title">Skills &amp; <span class="accent">Technologies</span></h2>
+    <div class="grid skill-cards" style="margin-top:28px">
+      <div class="skill-card">
+        <h3><span class="dot"></span>Frontend (Core)</h3>
+        <div class="chips">
+          <span class="chip">Angular (v12–v20)</span><span class="chip">TypeScript</span><span class="chip">JavaScript</span><span class="chip">RxJS</span><span class="chip">NgRx</span><span class="chip">Angular Material</span><span class="chip">Reactive Forms</span><span class="chip">Custom Directives &amp; Pipes</span><span class="chip">Lazy Loading</span><span class="chip">HTTP Interceptors</span><span class="chip">HTML5</span><span class="chip">CSS3 / SCSS</span><span class="chip">Bootstrap</span><span class="chip">Core Web Vitals</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3><span class="dot"></span>UI &amp; Integrations</h3>
+        <div class="chips">
+          <span class="chip">Google Maps</span><span class="chip">Chart.js</span><span class="chip">Owl Carousel</span><span class="chip">ngx-spinner</span><span class="chip">ngx-toaster</span><span class="chip">Global Loader</span><span class="chip">Elfsight</span><span class="chip">Chatbot</span><span class="chip">SalesAssist</span><span class="chip">Airpay Gateway</span><span class="chip">OTP Login</span><span class="chip">Advanced Search</span><span class="chip">Third-Party APIs</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3><span class="dot"></span>Backend &amp; Data</h3>
+        <div class="chips">
+          <span class="chip">Node.js</span><span class="chip">NestJS</span><span class="chip">REST APIs</span><span class="chip">WebSockets</span><span class="chip">Redis</span><span class="chip">ElasticSearch</span><span class="chip">N7 CDN Caching</span><span class="chip">MySQL</span><span class="chip">PostgreSQL</span><span class="chip">MongoDB</span><span class="chip">Python / Django (Basics)</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3><span class="dot"></span>DevOps &amp; Tools</h3>
+        <div class="chips">
+          <span class="chip">Docker</span><span class="chip">AWS</span><span class="chip">PM2</span><span class="chip">Nginx</span><span class="chip">CI/CD</span><span class="chip">Git / GitHub / GitLab</span><span class="chip">Jira</span><span class="chip">Trello</span><span class="chip">Slack</span><span class="chip">Notion</span><span class="chip">Postman</span><span class="chip">Claude AI</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="wrap reveal">
+    <span class="eyebrow">Selected Work</span>
+    <h2 class="title">Featured <span class="accent">Projects</span></h2>
+    <p class="lead" style="margin-top:8px">Enterprise applications I've built and shipped at ResilienceSoft.</p>
+    <div class="grid proj-grid" style="margin-top:28px">
+
+      <div class="proj">
+        <div class="top"><h3>EkoStay</h3><span class="live">LIVE</span></div>
+        <div class="sub">Luxury vacation-rental &amp; villa booking platform</div>
+        <ul>
+          <li>Own the complete <b style="color:#e7eef2">Angular 14 frontend</b> — architecture, feature modules &amp; shared UI library.</li>
+          <li>Built advanced search, filters, form validation &amp; interactive Google Maps.</li>
+          <li>Implemented Airpay payment gateway, checkout &amp; OTP-verified login.</li>
+          <li>Integrated Zoho Analytics, Elfsight, chatbot &amp; N7 CDN caching; led performance optimization.</li>
+        </ul>
+        <div class="stack"><span>Angular 14</span><span>RxJS</span><span>Docker</span><span>Airpay</span><span>Google Maps</span><span>N7 CDN</span></div>
+        <div class="links"><a href="https://ekostay.com" target="_blank">&#128279; View Live Site</a></div>
+      </div>
+
+      <div class="proj">
+        <div class="top"><h3>Delivery Package</h3></div>
+        <div class="sub">Logistics &amp; package delivery platform</div>
+        <ul>
+          <li>Built modules &amp; custom middleware on <b style="color:#e7eef2">Angular + NestJS</b> for package tracking.</li>
+          <li>Developed a real-time chat system using <b style="color:#e7eef2">WebSockets</b>.</li>
+          <li>Integrated Redis caching &amp; ElasticSearch for fast advanced search.</li>
+        </ul>
+        <div class="stack"><span>Angular</span><span>NestJS</span><span>Redis</span><span>ElasticSearch</span><span>WebSockets</span></div>
+      </div>
+
+      <div class="proj">
+        <div class="top"><h3>Carrier Network</h3></div>
+        <div class="sub">Carrier &amp; transport management platform</div>
+        <ul>
+          <li>Led frontend in <b style="color:#e7eef2">Angular + Material</b> with role-based auth.</li>
+          <li>Interactive charts (Chart.js), Infinite Scroll &amp; Time-Zone custom pipes/directives.</li>
+          <li>Global loader, ngx-spinner &amp; ngx-toaster; contributed to Node.js APIs.</li>
+        </ul>
+        <div class="stack"><span>Angular</span><span>Chart.js</span><span>Custom Directives</span><span>Node.js</span></div>
+      </div>
+
+      <div class="proj">
+        <div class="top"><h3>SwiftTics</h3></div>
+        <div class="sub">Event ticketing &amp; cashless payment platform</div>
+        <ul>
+          <li>Integrated <b style="color:#e7eef2">Google Maps API</b> for dynamic event mapping.</li>
+          <li>Improved form design &amp; validations; resolved critical bugs to improve stability.</li>
+        </ul>
+        <div class="stack"><span>Angular 14</span><span>Node.js</span><span>Docker</span><span>Google Maps</span></div>
+      </div>
+
+    </div>
+
+    <div class="earlier">
+      <h3>Earlier Projects</h3>
+      <ul>
+        <li><b>Docshaala (MEAN)</b> — Section Test Module end-to-end (Angular, Node.js, MySQL).</li>
+        <li><b>MDM — Meter Data Management</b> — VEE module &amp; Ag-Grid tables (sorting, filtering, pagination, export) — Angular, Node.js, .NET.</li>
+        <li><b>Dr. AquaPuri</b> — NgRx &amp; Owl Carousel (Angular 14, .NET). <b>SalamatakDr</b> — clinic booking &amp; appointments.</li>
+        <li><b>dcmevents.co.uk</b> — contributed to the initial website launch/build (Angular).</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" style="background:var(--bg2)">
+  <div class="wrap reveal">
+    <span class="eyebrow">Where I've Worked</span>
+    <h2 class="title">Experience</h2>
+    <div class="exp" style="margin-top:28px">
+      <div class="head">
+        <div>
+          <div class="r">Senior Angular Developer</div>
+          <div class="c">ResilienceSoft, Bilaspur, India</div>
+        </div>
+        <div class="d">Jul 2022 – Present · 4+ years</div>
+      </div>
+      <ul>
+        <li>Delivered <b style="color:#e7eef2">5+ enterprise web applications</b> for clients across multiple domains.</li>
+        <li>Led frontend architecture using Angular (v12–v18), TypeScript, RxJS &amp; NgRx; built reusable component libraries, custom directives and pipes.</li>
+        <li>Migrated and upgraded multiple Angular applications from v12 to v18; managed Docker-based deployments to production &amp; staging.</li>
+        <li>Developed backend services and REST APIs with Node.js / NestJS.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="wrap reveal">
+    <span class="eyebrow">Get In Touch</span>
+    <div class="big">Let's build something <span class="grad">great</span></div>
+    <p>I'm open to <b style="color:#cfe">Senior Angular / Frontend</b> opportunities. Have a role or project in mind? Let's talk.</p>
+    <div class="contact-cta">
+      <a href="mailto:sandhya.ojha7@gmail.com" class="btn btn-primary">&#9993; sandhya.ojha7@gmail.com</a>
+      <a href="https://linkedin.com/in/sandhya-ojha-63a72154" target="_blank" class="btn btn-ghost">in&nbsp; LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Designed &amp; built by <b>Sandhya Kumari Ojha</b> · Angular · &copy; 2026</div>
+</footer>
+
+<script>
+  // nav scroll
+  const nav=document.getElementById('nav');
+  addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40));
+  // mobile menu
+  const mb=document.getElementById('menuBtn'),nl=document.getElementById('navLinks');
+  mb.addEventListener('click',()=>nl.classList.toggle('open'));
+  nl.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nl.classList.remove('open')));
+  // typed effect
+  const words=["Angular · Node.js · Docker","frontend architecture","reusable components","performance optimization"];
+  let wi=0,ci=0,del=false,el=document.getElementById('typed');
+  (function type(){
+    const w=words[wi];
+    el.textContent=del?w.slice(0,ci--):w.slice(0,ci++);
+    if(!del&&ci===w.length+1){del=true;setTimeout(type,1400);return;}
+    if(del&&ci<0){del=false;wi=(wi+1)%words.length;ci=0;}
+    setTimeout(type,del?45:80);
+  })();
+  // reveal on scroll
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.14});
+  document.querySelectorAll('.reveal').forEach(r=>io.observe(r));
+  // starfield
+  const cv=document.getElementById('stars'),cx=cv.getContext('2d');let W,H,dots;
+  function resize(){W=cv.width=cv.offsetWidth;H=cv.height=cv.offsetHeight;dots=Array.from({length:Math.min(70,W/18|0)},()=>({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.6+.4,vx:(Math.random()-.5)*.25,vy:(Math.random()-.5)*.25}));}
+  function draw(){cx.clearRect(0,0,W,H);for(const d of dots){d.x+=d.vx;d.y+=d.vy;if(d.x<0||d.x>W)d.vx*=-1;if(d.y<0||d.y>H)d.vy*=-1;cx.beginPath();cx.arc(d.x,d.y,d.r,0,7);cx.fillStyle='rgba(52,211,153,.55)';cx.fill();}
+    for(let i=0;i<dots.length;i++)for(let j=i+1;j<dots.length;j++){const a=dots[i],b=dots[j],dx=a.x-b.x,dy=a.y-b.y,dl=Math.hypot(dx,dy);if(dl<120){cx.beginPath();cx.moveTo(a.x,a.y);cx.lineTo(b.x,b.y);cx.strokeStyle='rgba(16,185,129,'+(1-dl/120)*.12+')';cx.stroke();}}
+    requestAnimationFrame(draw);}
+  addEventListener('resize',resize);resize();draw();
+</script>
+</body>
+</html>
